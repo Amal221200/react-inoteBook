@@ -4,7 +4,7 @@ const app = express();
 const port = 3000;
 
 connectToMongoose();
-
+app.use(express.json())
 // All routes
 // Authentication
 app.use('/api/auth', require('./routes/auth'))
