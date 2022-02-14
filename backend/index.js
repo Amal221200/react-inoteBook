@@ -5,10 +5,12 @@ const port = 3000;
 
 connectToMongoose();
 
-app.get('/', (req, res)=>{
-    res.send('Hello World!');
-})
+// All routes
+// Authentication
+app.use('/api/auth', require('./routes/auth'))
+// Notes
+app.use('/api/notes', require('./routes/notes'))
 
 app.listen(port, ()=>{
-    console.log('App listening at port '+port)
+    console.log(`App listening at http://localhost:${port} `)
 })
