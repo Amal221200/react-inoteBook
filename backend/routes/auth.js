@@ -7,7 +7,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const SECRET_KEY = process.env.SECRET_KEY;
 
-// Creating a user at /api/auth/signup
+// ROUTE 1: Creating a user at /api/auth/signup
 router.post('/signup', [
     body('name', 'Length should be minimum 3').isLength({ min: 3 }),
     body('email', 'Enter a valid email').isEmail(),
@@ -37,21 +37,67 @@ router.post('/signup', [
         })
 
         const data = {
-            user:{
+            user: {
                 id: user.id
             }
         }
 
         const authToken = jwt.sign(data, SECRET_KEY)
 
-        res.json(authToken)
+        res.json({authToken})
         // res.json(user)
 
         // Catching any other errors
-    }catch(error){
+    } catch (error) {
         console.error(error.message)
-        res.status(500).send('Some error occured')
+        res.status(500).send('Internal Server Error')
     }
 })
+
+
+// ROUTE 2: Authenticating a user at /api/auth/login
+router.post('/login',
+    body('email', 'Enter a valid email').isEmail(),
+    body('password', 'Password cannot be empty').exists(),
+    async (req, res) => {
+        // Error in validation
+        const errors = validationResult(req)
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() })
+        }
+
+        const { email, password } = req.body;
+
+        try {
+            const user = await User.findOne({email})
+
+            if(!user){
+                return res.status(400).json({error:'Please enter the correct credentials'})
+            }
+
+            const comparePassword = await bcrypt.compare(password, user.password);
+
+            if(!comparePassword){
+                return res.status(400).json({error:'Please enter the correct credentials'})
+            }
+
+            const data = {
+                user:{
+                    id: user.id
+                }
+            }
+
+            const authToken = jwt.sign(data, SECRET_KEY);
+
+            res.status(200).json({authToken})
+        } catch (error) {
+            console.error(error.message)
+            res.status(500).send('Internal Server Error')
+        }
+    })
+
+
+
+
 
 module.exports = router;
