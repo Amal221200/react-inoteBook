@@ -30,6 +30,51 @@ const NoteState = (props) => {
             "tag": "General",
             "date": "2022-02-16T01:10:50.377Z",
             "__v": 0
+        },
+        {
+            "_id": "620c4f1a7140c20209033bc5",
+            "user": "620c4dbd881a09c33b6c2365",
+            "title": "Third note",
+            "description": "This is my third note",
+            "tag": "General",
+            "date": "2022-02-16T01:10:50.377Z",
+            "__v": 0
+        },
+        {
+            "_id": "620c4f1a7140c20209033bc5",
+            "user": "620c4dbd881a09c33b6c2365",
+            "title": "Third note",
+            "description": "This is my third note",
+            "tag": "General",
+            "date": "2022-02-16T01:10:50.377Z",
+            "__v": 0
+        },
+        {
+            "_id": "620c4f1a7140c20209033bc5",
+            "user": "620c4dbd881a09c33b6c2365",
+            "title": "Third note",
+            "description": "This is my third note",
+            "tag": "General",
+            "date": "2022-02-16T01:10:50.377Z",
+            "__v": 0
+        },
+        {
+            "_id": "620c4f1a7140c20209033bc5",
+            "user": "620c4dbd881a09c33b6c2365",
+            "title": "Third note",
+            "description": "This is my third note",
+            "tag": "General",
+            "date": "2022-02-16T01:10:50.377Z",
+            "__v": 0
+        },
+        {
+            "_id": "620c4f1a7140c20209033bc5",
+            "user": "620c4dbd881a09c33b6c2365",
+            "title": "Third note",
+            "description": "This is my third note",
+            "tag": "General",
+            "date": "2022-02-16T01:10:50.377Z",
+            "__v": 0
         }
     ]
     const [notes, setNotes] = useState(initialNotes)
