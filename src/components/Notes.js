@@ -14,8 +14,9 @@ const Notes = () => {
     }, [])
 
     const ref = useRef(null)
+    const refClose = useRef(null)
 
-    const updateNoteR = (currentNote) => {
+    const updateNote = (currentNote) => {
         ref.current.click()
         setNote({eid: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.etag})
     }
@@ -28,8 +29,8 @@ const Notes = () => {
     }
 
     const handleOnClick = (e) => {
-        e.preventDefault()
         editNote(note.eid, note.etitle, note.edescription, note.etag)
+        refClose.current.click()
     }
 
     return (
@@ -62,7 +63,7 @@ const Notes = () => {
                             </form>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="button" className="btn btn-primary" onClick={handleOnClick}>Update notes</button>
                         </div>
                     </div>
@@ -71,7 +72,7 @@ const Notes = () => {
             <h2>Your Notes</h2>
             <div className="row">
                 {notes.map(note => (
-                    <NoteItem key={note._id} updateNoteR={updateNoteR} note={note} />
+                    <NoteItem key={note._id} updateNote={updateNote} note={note} />
                 ))}
             </div>
         </div>
