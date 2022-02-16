@@ -4,10 +4,10 @@ import NoteContext from '../context/notes/NoteContext'
 const AddNote = () => {
     const context = useContext(NoteContext)
     const { addNote } = context
-    const [note, setNote] = useState({title: '', description:'', tag:''})
+    const [note, setNote] = useState({ title: '', description: '', tag: '' })
 
-    const onChange = (e)=>{
-        setNote({...note, [e.target.name]: e.target.value})
+    const onChange = (e) => {
+        setNote({ ...note, [e.target.name]: e.target.value })
     }
 
     const handleSubmit = (e) => {
