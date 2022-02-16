@@ -6,7 +6,9 @@ const NoteItem = ({ title, description, tag }) => {
       <div className="card">
         <div className="card-body">
           <h5 className="card-title">{title}</h5>
-          <p className="card-text">{description} Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero dolor commodi repellendus delectus, quo accusantium, fugiat inventore, nostrum corporis vitae distinctio nisi illum nemo assumenda sit adipisci in est consequatur culpa vel excepturi eaque!</p>
+          <p className="card-text">{description}</p>
+          <i className="far fa-edit mx-2"></i>
+          <i className="far fa-trash-alt mx-2"></i>
         </div>
       </div>
     </div>
