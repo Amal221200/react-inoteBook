@@ -31,15 +31,6 @@ const NoteState = (props) => {
         })
 
         const data = await res.json()
-        // const note = {
-        //     "_id": "620c4ff1a7140c20209033bc5",
-        //     "user": "620c4dbd881a09c33b6c2365",
-        //     "title": title,
-        //     "description": description,
-        //     "tag": tag,
-        //     "date": "2022-02-16T01:10:50.377Z",
-        //     "__v": 0
-        // }
         setNotes([...notes, data])
     }
 
@@ -57,12 +48,7 @@ const NoteState = (props) => {
         setNotes(upNotes)
     }
 
-    const updateNote = async (id, title, description, tag) => {
-        // const note = notes.filter(note => note._id === id)
-        // note[0].title = title
-        // note[0].description = description
-        // note[0].tag = tag
-
+    const editNote = async (id, title, description, tag) => {
         const res = await fetch(`${host}/api/notes/updatenote/${id}`, {
             method: 'PUT',
             headers: {
@@ -76,17 +62,16 @@ const NoteState = (props) => {
 
         for (let index = 0; index < notes.length; index++) {
             const element = notes[index];
-            if (element._id === id) {
+            if (element._id === data._id) {
                 element.title = title
                 element.description = description
                 element.tag = tag
             }
         }
-        // setNotes(note)
     }
 
     return (
-        <NoteContext.Provider value={{ notes, addNote, deleteNote, updateNote, fetchNotes }}>
+        <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote, fetchNotes }}>
             {props.children}
         </NoteContext.Provider>
     )
