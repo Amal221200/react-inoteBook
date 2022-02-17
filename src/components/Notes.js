@@ -11,10 +11,10 @@ const Notes = () => {
     useEffect(() => {
         fetchNotes()
         //eslint-disable-next-line
-    }, [notes])
+    }, [])
 
-    const ref = useRef('')
-    const refClose = useRef('')
+    const ref = useRef(null)
+    const refClose = useRef(null)
 
     const updateNote = (currentNote) => {
         ref.current.click()
@@ -64,7 +64,7 @@ const Notes = () => {
                         </div>
                         <div className="modal-footer">
                             <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary" onClick={handleOnClick}>Update notes</button>
+                            <button disabled={note.etitle.length < 5 && note.edescription.length < 5} type="submit" className="btn btn-primary" onClick={handleOnClick}>Update notes</button>
                         </div>
                     </div>
                 </div>
