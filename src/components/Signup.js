@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Signup = ({ showAlert }) => {
 
@@ -60,6 +60,9 @@ const Signup = ({ showAlert }) => {
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
+            <div className='my-3 text-center'>
+                <Link to="/login" className="text-info text-decoration-none">Already have an account? log in</Link>
+            </div>
         </div>
     )
 }

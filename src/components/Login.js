@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Login = ({ showAlert }) => {
     const navigate = useNavigate()
@@ -23,23 +23,28 @@ const Login = ({ showAlert }) => {
             localStorage.setItem("token", data.authToken)
             navigate('/')
             showAlert('Logged in successfully', 'success', 'welcome')
-        }else{
+        } else {
             showAlert('Invalid credentials', 'danger', 'error')
         }
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-                <label htmlFor="email" className="form-label">Email address</label>
-                <input type="email" className="form-control" id="email" name='email' aria-describedby="emailHelp" value={user.email} onChange={onChange} required />
+        <>
+            <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                    <label htmlFor="email" className="form-label">Email address</label>
+                    <input type="email" className="form-control" id="email" name='email' aria-describedby="emailHelp" value={user.email} onChange={onChange} required />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="password" className="form-label">Password</label>
+                    <input type="password" className="form-control" id="password" name='password' autoComplete='' value={user.password} onChange={onChange} required />
+                </div>
+                <button type="submit" className="btn btn-primary">Submit</button>
+            </form>
+            <div className='my-3 text-center'>
+                <Link to="/signup" className="text-info text-decoration-none">If you don't have an account, sign up</Link>
             </div>
-            <div className="mb-3">
-                <label htmlFor="password" className="form-label">Password</label>
-                <input type="password" className="form-control" id="password" name='password' autoComplete='' value={user.password} onChange={onChange} required />
-            </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
-        </form>
+        </>
     )
 }
 
