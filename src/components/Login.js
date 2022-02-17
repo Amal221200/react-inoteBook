@@ -19,7 +19,7 @@ const Login = () => {
             body: JSON.stringify({ email: user.email, password: user.password })
         })
         const data = await res.json()
-        if(data.success){
+        if (data.success) {
             localStorage.setItem("token", data.authToken)
             navigate('/')
         }
