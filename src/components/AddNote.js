@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import NoteContext from '../context/notes/NoteContext'
 
-const AddNote = () => {
+const AddNote = ({ showAlert }) => {
     const context = useContext(NoteContext)
     const { addNote } = context
     const [note, setNote] = useState({ title: '', description: '', tag: '' })
@@ -13,6 +13,7 @@ const AddNote = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         addNote(note.title, note.description, note.tag)
+        showAlert('Added note successfully', 'success')
     }
     return (
         <div>

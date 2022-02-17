@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const Signup = () => {
+const Signup = ({ showAlert }) => {
 
     const navigate = useNavigate()
     const [user, setUser] = useState({ name: '', email: '', password: '', cpassword: '' })
@@ -26,9 +26,13 @@ const Signup = () => {
             if (data.success) {
                 localStorage.setItem("token", data.authToken)
                 navigate('/')
+                showAlert(`Successfully created user ${user.name}`, 'success')
+            }else{
+                showAlert('Invalid details. Try using an email which is not used by another user', 'danger', 'error')
             }
         } else {
             setcp(false)
+            showAlert('Please enter Confirm Password field same as the Password', 'danger', 'error')
             return
         }
     }
@@ -51,7 +55,7 @@ const Signup = () => {
                     <label htmlFor="cpassword" className="form-label">Confirm Password</label>
                     <input type="password" className="form-control" id="cpassword" name='cpassword' autoComplete='' value={user.cpassword} onChange={onChange} minLength={5} required />
                 </div>
-                <div style={{height:'40px'}}>
+                <div style={{ height: '40px' }}>
                     <h5 className='text-danger'>{!cp ? '*Please enter Confirm Password field same as the Password' : ""}</h5>
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
