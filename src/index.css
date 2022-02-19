@@ -24,3 +24,15 @@ i.fa-trash-alt:hover{
 i.fa-edit:hover{
   color: #0d6efd;
 }
+
+.add-btn{
+  position: absolute;
+  right: 100px;
+  bottom: 50px;
+  font-size: 40px;
+  font-weight: lighter;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
