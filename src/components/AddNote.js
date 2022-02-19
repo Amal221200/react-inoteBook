@@ -55,8 +55,6 @@ const AddNote = ({ showAlert }) => {
                                         <input type="text" className="form-control" id="tag" name='tag' onChange={onChange} />
                                     </div>
                                     <button disabled={note.title.length < 5 && note.description.length < 5} type="submit" className="btn btn-primary" onClick={Sub}>Add Note</button>
-
-
                                 </form>
                             </div>
                             <div className="modal-footer">
